@@ -43,7 +43,7 @@ app.put("/repositories/:id", (request, response) => {
     repositories[repositoryIndex] = repository;
     return response.json(repository);
   } else {
-    return response.status(404).json({ error: "Repository not found." });
+    return response.status(400).json({ error: "Repository not found." });
   }
 });
 
@@ -57,7 +57,7 @@ app.delete("/repositories/:id", (request, response) => {
     repositories.splice(repositoryIndex, 1);
     return response.status(204).json();
   } else {
-    return response.status(404).json({ error: "Repository not found." });
+    return response.status(400).json({ error: "Repository not found." });
   }
 });
 
@@ -72,7 +72,7 @@ app.post("/repositories/:id/like", (request, response) => {
     repository.likes++;
     return response.json(repository);
   } else {
-    return response.status(404).json({ error: "Repository not found." });
+    return response.status(400).json({ error: "Repository not found." });
   }
 });
 
